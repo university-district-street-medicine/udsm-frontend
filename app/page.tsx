@@ -1,3 +1,4 @@
+import EventCard from "@/components/eventCard";
 import { Inter, Roboto } from "next/font/google";
 import Link from "next/link";
 
@@ -31,13 +32,36 @@ export default function Home() {
       href: "https://servicelearning.washington.edu/opportunities/Seattle",
     },
   ];
+
+  // Events boxes - id(for the key prop), date, name, desc
+  const events = [
+    {
+      id: 1,
+      date: "SAT, SEP 25",
+      name: "September Low-Cost Clinic",
+      description: "Help Children Save Lives"
+    },
+    {
+      id: 2,
+      date: "FRI, OCT 01",
+      name: "October Free Clinic",
+      description: "Help Children Save Lives"
+    },
+    {
+      id: 3,
+      date: "SAT, OCT 02",
+      name: "Monthly Dental Checkup",
+      description: "Routine check up for all the children in the camp"
+    }
+  ];
+
   return (
     <main>
-      <div className="relative w-full min-h-[700px] bg-[url('/homepage.png')] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center">
+      <div className="relative w-full bg-[url('/homepage.png')] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center pt-99 pb-17 px-6">
         <div className="absolute inset-0 bg-[#3F1E77]/51 z-0" />
-        <div>
+        <div className="max-w-292 mx-auto w-full">
           <div
-            className={`${inter.className} font-bold text-[5.1875rem] leading-[6.25rem] tracking-[-0.02em] text-[#FFFFFF] relative z-10 mt-[14rem]`}
+            className={`${inter.className} font-bold lg:text-[115px] lg:leading-[100px] tracking-[-0.02em] text-[#FFFFFF] relative z-10`}
           >
             Serving our <br />
             unhoused neighbors <br />
@@ -82,7 +106,38 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div></div>
+      {/* Upcoming Events Section */}
+      <section className="bg-[#FFFFFF] pt-56 pb-61 max-w-301 mx-auto w-full">
+        {/* Container for heading, events, etc. */}
+        <div>
+
+          {/* Container for heading (Join Us, Upcoming Events) */}
+          <div className="flex flex-col items-center">
+            <p className={`${roboto.className} font-bold text-[30px] tracking-[0.4em] leading-[1.8] text-[#7C8990]`}>JOIN US</p>
+            <h2 className={`${inter.className} font-bold text-[80px] tracking-[-0.04em] leading-[1.8] text-[#092035]`}>Upcoming Events</h2>
+          </div>
+
+          {/* Container for three upcoming events */}
+          <div className="flex flex-col">
+
+            {/* Each event containing date, name and quick desc. and signup btn, 
+                each event container divided into left container and button
+            */}
+            {events.map((event) => (
+              <div className="flex justify-between ">
+
+                {/* Left container with date and name */}
+                <EventCard key={event.id} date={event.date} name={event.name} description={event.description} />
+
+                <button className="flex items-start">
+                  Sign up
+                </button>
+
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
