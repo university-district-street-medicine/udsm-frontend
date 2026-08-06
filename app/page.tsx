@@ -1,9 +1,10 @@
-import EventCard from "@/components/eventCard";
-import { Inter, Roboto } from "next/font/google";
+import Button from "@/components/Button";
+import EventCard from "@/components/EventCard";
+import Header from "@/components/Header";
+import { gray, borderGray } from "@/utils/fonts";
+import { roboto, inter } from "@/utils/fonts";
 import Link from "next/link";
 
-const inter = Inter({ subsets: ["latin"] });
-const roboto = Roboto({ subsets: ["latin"], weight: "400" });
 
 export default function Home() {
   const redirectBoxes = [
@@ -60,13 +61,11 @@ export default function Home() {
       <div className="relative w-full bg-[url('/homepage.png')] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center pt-99 pb-17 px-6">
         <div className="absolute inset-0 bg-[#3F1E77]/51 z-0" />
         <div className="max-w-292 mx-auto w-full">
-          <div
-            className={`${inter.className} font-bold lg:text-[115px] lg:leading-[100px] tracking-[-0.02em] text-[#FFFFFF] relative z-10`}
-          >
+          <Header level="h1">
             Serving our <br />
             unhoused neighbors <br />
             where they are
-          </div>
+          </Header>
           <div className="relative z-10 w-[33.125rem] h-[0.4375rem] bg-[#FFD261] mt-[1.25rem]" />
           <div className="relative z-10 flex gap-[1rem] mt-[4rem]">
             {redirectBoxes.map((box) => (
@@ -112,9 +111,9 @@ export default function Home() {
         <div>
 
           {/* Container for heading (Join Us, Upcoming Events) */}
-          <div className="flex flex-col items-center">
-            <p className={`${roboto.className} font-bold text-[30px] tracking-[0.4em] leading-[1.8] text-[#7C8990]`}>JOIN US</p>
-            <h2 className={`${inter.className} font-bold text-[80px] tracking-[-0.04em] leading-[1.8] text-[#092035]`}>Upcoming Events</h2>
+          <div className="flex flex-col items-center pb-26">
+            <p className={`${roboto.className} font-bold text-[30px] tracking-[0.4em] leading-[1.8] text-${gray}`}>JOIN US</p>
+            <Header level="h2">Upcoming Events</Header>
           </div>
 
           {/* Container for three upcoming events */}
@@ -123,18 +122,16 @@ export default function Home() {
             {/* Each event containing date, name and quick desc. and signup btn, 
                 each event container divided into left container and button
             */}
-            {events.map((event) => (
-              <div className="flex justify-between ">
-
-                {/* Left container with date and name */}
-                <EventCard key={event.id} date={event.date} name={event.name} description={event.description} />
-
-                <button className="flex items-start">
-                  Sign up
-                </button>
-
-              </div>
-            ))}
+            {events.map((event, index) => {
+              const isLast = index === events.length - 1
+              return (
+                <div key={event.id} className={`flex justify-between pt-15 ${isLast ? "pb-1" : `pb-17 border-b border-b-${borderGray}`}`}>
+                  {/* Left container with date and name */}
+                  <EventCard key={event.id} date={event.date} name={event.name} description={event.description} />
+                  <Button />
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
