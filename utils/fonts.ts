@@ -9,8 +9,10 @@ export const roboto = Roboto({
   weight: ["400", "700", "900"]
 });
 
-export const gray = "[#7C8990]"
+export const grayText = "text-[#7C8990]"
 
 export const borderGray = "[#ADB7BD]"
 
 export const yellowButton = "[#F4BE37]"
+
+export const grayBlueText = "text-[#495A69]"

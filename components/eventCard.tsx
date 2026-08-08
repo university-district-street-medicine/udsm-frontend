@@ -1,4 +1,4 @@
-import { gray } from "@/utils/fonts";
+import { grayText } from "@/utils/fonts";
 import Header from "./Header";
 
 interface EventCardProps {
@@ -17,8 +17,8 @@ export default function EventCard({ date, name, description }: EventCardProps) {
 
       {/* Container for name and desc */}
       <div className={`flex flex-col gap-[20px]`}>
-        <Header level="h3">{name}</Header>
-        <p className={`font-normal text-${gray}`}>{description}</p>
+        <Header level="h4">{name}</Header>
+        <p className={`font-normal ${grayText}`}>{description}</p>
       </div>
     </div >
   );
