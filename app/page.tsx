@@ -169,7 +169,7 @@ export default function Home() {
                 <div key={event.id} className={`flex justify-between pt-15 ${isLast ? "pb-1" : `pb-17 border-b border-b-${borderGray}`}`}>
                   {/* Left container with date and name */}
                   <EventCard key={event.id} date={event.date} name={event.name} description={event.description} />
-                  <Button />
+                  <Button text="Sign Up" />
                 </div>
               )
             })}
@@ -189,6 +189,24 @@ export default function Home() {
 
           {/* Carousel container */}
           <PartnerCarousel partners={carouselPartners}></PartnerCarousel>
+        </div>
+      </section>
+
+      {/* Get Involved section */}
+      <section>
+        {/* Div for whole section */}
+        <div className={`relative w-full pt-47 pb-70 bg-[url('/homepage.png')] flex justify-center items-center bg-cover bg-no-repeat bg-center`}>
+          <div className="bg-[#3F1E77]/51 z-0 absolute inset-0" />
+          {/* Div for content and button */}
+          <div className={`flex items-start gap-28`}>
+            {/* Div for content */}
+            <div className={`max-w-103`}>
+              <h2 className={`${inter.className} font-bold lg:text-[48px] tracking-[-0.02em] text-[#FFFFFF] relative z-10`}>Get Involved!</h2>
+              <p className={`${inter.className} text-[#FFFFFF] relative z-10 text-[1rem]`}>We are only as strong as our volunteer base! Your support is invaluable and we greatly appreciate it.</p>
+            </div>
+            {/* Button */}
+            <Button text="Volunteer"></Button>
+          </div>
         </div>
       </section>
     </main>
