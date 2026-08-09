@@ -1,8 +1,11 @@
-import { Inter, Roboto } from "next/font/google";
+import Button from "@/components/Button";
+import EventCard from "@/components/EventCard";
+import Header from "@/components/Header";
+import PartnerCarousel from "@/components/PartnerCarousel";
+import { borderGray, grayText } from "@/utils/fonts";
+import { roboto, inter } from "@/utils/fonts";
 import Link from "next/link";
 
-const inter = Inter({ subsets: ["latin"] });
-const roboto = Roboto({ subsets: ["latin"], weight: "400" });
 
 export default function Home() {
   const redirectBoxes = [
@@ -31,18 +34,79 @@ export default function Home() {
       href: "https://servicelearning.washington.edu/opportunities/Seattle",
     },
   ];
+
+  // Events boxes - id(for the key prop), date, name, desc
+  const events = [
+    {
+      id: 1,
+      date: "SAT, SEP 25",
+      name: "September Low-Cost Clinic",
+      description: "Help Children Save Lives"
+    },
+    {
+      id: 2,
+      date: "FRI, OCT 01",
+      name: "October Free Clinic",
+      description: "Help Children Save Lives"
+    },
+    {
+      id: 3,
+      date: "SAT, OCT 02",
+      name: "Monthly Dental Checkup",
+      description: "Routine check up for all the children in the camp"
+    }
+  ];
+
+  // Id, name, caption, and image source
+  const carouselPartners = [
+    {
+      id: 1,
+      name: "U-District Outreach",
+      caption: "Engagement of those living on the street, distribution of basic supplies, resource advice, partnering with van outreach.",
+      imageUrl: "/U-District.png"
+    },
+    {
+      id: 2,
+      name: "St Vincent de Paul",
+      caption: "Assessment, education/counseling, social work opportunities, basic medical care of clients during the dinner.",
+      imageUrl: "/St.Vincent.png"
+    },
+    {
+      id: 3,
+      name: "Mobile Health Van",
+      caption: "Access to a more private exam space in the Mobile Health Van with all the features of a basic clinic exam room.",
+      imageUrl: "/HealthVan.png"
+    },
+    {
+      id: 4,
+      name: "Elizabeth Gregory Home",
+      caption: "Student teams address patients' medical concerns and questions, provide basic medical care and occasional foot care.",
+      imageUrl: "/ElizabethGregoryHome.png"
+    },
+    {
+      id: 5,
+      name: "One Health Clinic",
+      caption: "UDSM students serve as patient navigators to improve accessibility of healthcare people and their pets.",
+      imageUrl: "/OneHealthClinic.png"
+    },
+    {
+      id: 6,
+      name: "Tent City 3",
+      caption: "Students provide regular foot care clinics as well as addressing medical concerns and questions.",
+      imageUrl: "/TentCity3.png"
+    }
+  ]
+
   return (
     <main>
-      <div className="relative w-full min-h-[700px] bg-[url('/homepage.png')] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center">
+      <div className="relative w-full bg-[url('/homepage.png')] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center pt-99 pb-17 px-6">
         <div className="absolute inset-0 bg-[#3F1E77]/51 z-0" />
-        <div>
-          <div
-            className={`${inter.className} font-bold text-[5.1875rem] leading-[6.25rem] tracking-[-0.02em] text-[#FFFFFF] relative z-10 mt-[14rem]`}
-          >
+        <div className="max-w-292 mx-auto w-full">
+          <Header level="h1">
             Serving our <br />
             unhoused neighbors <br />
             where they are
-          </div>
+          </Header>
           <div className="relative z-10 w-[33.125rem] h-[0.4375rem] bg-[#FFD261] mt-[1.25rem]" />
           <div className="relative z-10 flex gap-[1rem] mt-[4rem]">
             {redirectBoxes.map((box) => (
@@ -82,7 +146,51 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div></div>
+      {/* Upcoming Events Section */}
+      <section className="bg-[#FFFFFF] pt-56 pb-61 max-w-301 mx-auto w-full">
+        {/* Container for heading, events, etc. */}
+        <div>
+
+          {/* Container for heading (Join Us, Upcoming Events) */}
+          <div className="flex flex-col items-center pb-26">
+            <p className={`${roboto.className} font-bold text-[30px] tracking-[0.4em] leading-[1.8] ${grayText}`}>JOIN US</p>
+            <Header level="h2">Upcoming Events</Header>
+          </div>
+
+          {/* Container for three upcoming events */}
+          <div className="flex flex-col">
+
+            {/* Each event containing date, name and quick desc. and signup btn, 
+                each event container divided into left container and button
+            */}
+            {events.map((event, index) => {
+              const isLast = index === events.length - 1
+              return (
+                <div key={event.id} className={`flex justify-between pt-15 ${isLast ? "pb-1" : `pb-17 border-b border-b-${borderGray}`}`}>
+                  {/* Left container with date and name */}
+                  <EventCard key={event.id} date={event.date} name={event.name} description={event.description} />
+                  <Button />
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Partners Section */}
+      <section className={`pb-79`}>
+        {/* Overall div container */}
+        <div>
+          {/* Container for headers */}
+          <div className="flex flex-col items-center pb-26">
+            <p className={`${roboto.className} font-bold text-[22px] tracking-[0.4em] leading-[1.8] ${grayText}`}>READ ON</p>
+            <Header level="h3">Our Partners</Header>
+          </div>
+
+          {/* Carousel container */}
+          <PartnerCarousel partners={carouselPartners}></PartnerCarousel>
+        </div>
+      </section>
     </main>
   );
 }
