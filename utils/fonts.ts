@@ -16,3 +16,5 @@ export const borderGray = "[#ADB7BD]"
 export const yellowButton = "[#F4BE37]"
 
 export const grayBlueText = "text-[#495A69]"
+
+export const purpleBackground = "[#491E5B]"
