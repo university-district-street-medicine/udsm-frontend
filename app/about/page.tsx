@@ -36,6 +36,23 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Values section */}
+      <section className="pb-37">
+        {/* Container div */}
+        <div className="mx-auto max-w-351 flex flex-col items-center px-10 gap-12">
+          <Header level="h2">Values</Header>
+          {/* All values */}
+          <div className="flex justify-between w-full text-navy-blue text-[1.5rem] font-bold">
+            <span>Compassion</span>
+            <span>Respect</span>
+            <span>Advocacy</span>
+            <span>Accountability</span>
+            <span>Collaboration</span>
+            <span>Experimental Learning</span>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
