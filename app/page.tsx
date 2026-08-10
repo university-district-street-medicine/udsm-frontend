@@ -103,7 +103,7 @@ export default function Home() {
       <div className="relative w-full bg-[url('/homepage.png')] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center pt-99 pb-17 px-6">
         <div className="absolute inset-0 bg-[#3F1E77]/51 z-0" />
         <div className="max-w-292 mx-auto w-full">
-          <Header level="h1">
+          <Header level="h1" >
             Serving our <br />
             unhoused neighbors <br />
             where they are
@@ -155,7 +155,7 @@ export default function Home() {
           {/* Container for heading (Join Us, Upcoming Events) */}
           <div className="flex flex-col items-center pb-26">
             <p className={`${roboto.className} font-bold text-[30px] tracking-[0.4em] leading-[1.8] ${grayText}`}>JOIN US</p>
-            <Header level="h2">Upcoming Events</Header>
+            <Header level="h2" >Upcoming Events</Header>
           </div>
 
           {/* Container for three upcoming events */}
@@ -185,7 +185,7 @@ export default function Home() {
           {/* Container for headers */}
           <div className="flex flex-col items-center pb-26">
             <p className={`${roboto.className} font-bold text-[22px] tracking-[0.4em] leading-[1.8] ${grayText}`}>READ ON</p>
-            <Header level="h3">Our Partners</Header>
+            <Header level="h3" >Our Partners</Header>
           </div>
 
           {/* Carousel container */}
