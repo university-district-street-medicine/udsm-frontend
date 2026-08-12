@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
+import OutreachSite from "@/components/OutreachSite";
 import Image from "next/image";
 import { inter } from "@/utils/fonts";
+
 export default function AboutPage() {
   return (
     <main>
@@ -53,6 +55,20 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-    </main>
+
+      {/* Outreach Sites section */}
+      <section className="pb-135">
+
+        {/* Top container */}
+        <div className="flex flex-col gap-17 items-center pb-22">
+          <Header level="h2">Outreach Sites</Header>
+          <p className="text-gray-blue text-[2.1875rem] max-w-380 leading-[1.2] text-balance text-center">
+            UDSM provides services within the University District as well as the larger Seattle area. Currently we are providing services at six main sites on a monthly/bi-monthly basis.
+          </p>
+        </div>
+
+        <OutreachSite name="Street Outreach" date="EVERY OTHER FRIDAY, 5:30PM-7:30PM" description={["Service location", "Engagement"]} location="Church on the Ave (4130 University Way NE, Seattle, WA 98105)"></OutreachSite>
+      </section>
+    </main >
   );
 }
