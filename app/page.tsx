@@ -2,7 +2,6 @@ import Button from "@/components/Button";
 import EventCard from "@/components/EventCard";
 import Header from "@/components/Header";
 import PartnerCarousel from "@/components/PartnerCarousel";
-import Footer from "@/components/Footer";
 import { borderGray, grayText } from "@/utils/fonts";
 import { roboto, inter } from "@/utils/fonts";
 import Link from "next/link";
