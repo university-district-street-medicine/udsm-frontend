@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import OutreachSite from "@/components/OutreachSite";
 import Image from "next/image";
 import { inter } from "@/utils/fonts";
+import { outreachSiteData } from "@/data/siteData";
 
 export default function AboutPage() {
   return (
@@ -67,7 +68,17 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <OutreachSite name="Street Outreach" date="EVERY OTHER FRIDAY, 5:30PM-7:30PM" description={["Service location", "Engagement"]} location="Church on the Ave (4130 University Way NE, Seattle, WA 98105)"></OutreachSite>
+        {/* Outreach Sites Container */}
+        <div className="w-full max-w-[1700px] mx-auto">
+          {/* CSS Grid container */}
+          <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-3 mx-auto w-full gap-y-16 gap-x-15">
+            {outreachSiteData.map((site) => {
+              return (
+                <OutreachSite key={site.id} name={site.name} date={site.date} description={site.description} location={site.location}></OutreachSite>
+              )
+            })}
+          </div>
+        </div>
       </section>
     </main >
   );
