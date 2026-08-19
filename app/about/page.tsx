@@ -1,6 +1,9 @@
 import Header from "@/components/Header";
+import OutreachSite from "@/components/OutreachSite";
 import Image from "next/image";
 import { inter } from "@/utils/fonts";
+import { outreachSiteData } from "@/data/siteData";
+
 export default function AboutPage() {
   return (
     <main>
@@ -53,6 +56,30 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-    </main>
+
+      {/* Outreach Sites section */}
+      <section className="pb-135">
+
+        {/* Top container */}
+        <div className="flex flex-col gap-17 items-center pb-22">
+          <Header level="h2">Outreach Sites</Header>
+          <p className="text-gray-blue text-[2.1875rem] max-w-380 leading-[1.2] text-balance text-center">
+            UDSM provides services within the University District as well as the larger Seattle area. Currently we are providing services at six main sites on a monthly/bi-monthly basis.
+          </p>
+        </div>
+
+        {/* Outreach Sites Container */}
+        <div className="w-full max-w-[1700px] mx-auto">
+          {/* CSS Grid container */}
+          <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-3 mx-auto w-full gap-y-16 gap-x-15">
+            {outreachSiteData.map((site) => {
+              return (
+                <OutreachSite key={site.id} name={site.name} date={site.date} description={site.description} location={site.location}></OutreachSite>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+    </main >
   );
 }
