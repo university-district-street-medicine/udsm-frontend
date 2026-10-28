@@ -7,6 +7,7 @@ interface Partner {
   name: string;
   caption: string;
   imageUrl: string;
+  serviceLearningUrl: string;
 }
 
 export default function PartnerCarousel({ partners }: { partners: Partner[] }) {
@@ -21,15 +22,25 @@ export default function PartnerCarousel({ partners }: { partners: Partner[] }) {
             <Image
               src={partner.imageUrl}
               alt={partner.name}
-              fill>
+              fill
+              sizes="372px">
             </Image>
           </div>
           {/* Partner Name */}
           <Header level="h4">{partner.name}</Header>
           {/* Partner Caption */}
-          <p className={`${inter} font-normal ${grayBlueText}`}>
+          <p className={`${inter.className} font-normal ${grayBlueText}`}>
             {partner.caption}
           </p>
+          {/* Learn more link */}
+          <a
+            href={partner.serviceLearningUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${inter.className} font-semibold text-[1rem] text-navy-blue underline decoration-solid`}
+          >
+            Learn More
+          </a>
         </div>
       ))
       }

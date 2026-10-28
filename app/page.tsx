@@ -2,10 +2,12 @@ import Button from "@/components/Button";
 import EventCard from "@/components/EventCard";
 import Header from "@/components/Header";
 import PartnerCarousel from "@/components/PartnerCarousel";
-import { borderGray, grayText } from "@/utils/fonts";
-import { roboto, inter } from "@/utils/fonts";
+import { borderGray, grayText, burveticaFont } from "@/utils/fonts";
+import { roboto, inter, spaceGrotesk, darkGreenText } from "@/utils/fonts";
 import Link from "next/link";
 import { redirectBoxes, events, carouselPartners } from "@/data/homeData";
+import { servicesData } from "@/data/servicesData";
+import ServiceCard from "@/components/ServicesCard";
 
 
 export default function Home() {
@@ -60,6 +62,49 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* New landing page as specified by Christina */}
+      <section className="pt-20">
+        {/* Top Container */}
+        <div className="flex flex-col gap-12 items-center pb-12 px-6">
+          {/* Tagline: max-w-[1312px] at 24px makes sentence 2 wrap after "guided by the" (measured with the sans-serif fallback; re-tune once Burvetica NC loads) */}
+          <div className={`${burveticaFont} text-[#0A5C45] font-medium text-[1.5rem] max-w-[1312px] leading-[1.4] text-center`}>
+            <p>UDSM builds trusting and lasting relationships with people who face barriers to traditional healthcare.</p>
+            <p>Our purpose is to create nonjudgmental and nontransactional opportunities for conversations about health, guided by the interests and priorities of community members.</p>
+          </div>
+          {/* Header for our services */}
+          <h2 className={`${spaceGrotesk.className} font-bold text-[4rem] tracking-[0.05em] uppercase ${darkGreenText}`}>Our Services</h2>
+
+        </div>
+
+        {/* Services Card Container */}
+        <div className="w-full max-w-[1700px] mx-auto px-10">
+          {/* CSS Grid container */}
+          <div className="grid grid-cols-4 grid-rows-1 mx-auto w-full gap-y-16 gap-x-15">
+            {servicesData.map((service) => {
+              return (
+                <ServiceCard key={service.id} name={service.name} caption={service.caption} imageUrl={service.imageUrl}></ServiceCard>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* Volunteer with us button*/}
+        <div className="flex justify-center pt-20">
+          <a
+            href="https://servicelearning.washington.edu/opportunities/Seattle"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${spaceGrotesk.className} font-bold text-[1.5rem] tracking-[0.05em] uppercase ${darkGreenText} bg-[#C8FAD2] hover:bg-[#B0F0BE] rounded-[20px] px-20 py-4 transition-colors`}
+          >
+            Volunteer with us! &gt;
+          </a>
+        </div>
+      </section>
+
+      {/*  */}
+
+
       {/* Upcoming Events Section */}
       <section className="bg-[#FFFFFF] pt-56 pb-61 max-w-301 mx-auto w-full">
         {/* Container for heading, events, etc. */}
