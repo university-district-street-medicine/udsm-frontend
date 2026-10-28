@@ -19,7 +19,7 @@ export default function TeamPage() {
         {/* Width container */}
         <div className="w-full">
           {/* Grid container */}
-          <div className="max-w-[88%] mx-auto">
+          <div className="max-w-[88%] mx-auto grid md:grid-cols-4">
             {teamData.map((member) => (
               <LeadershipCard key={member.id} name={member.name} role={member.role} description={member.description} imageURL={member.imageURL}></LeadershipCard>
             ))}

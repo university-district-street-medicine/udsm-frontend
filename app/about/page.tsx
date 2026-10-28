@@ -69,12 +69,12 @@ export default function AboutPage() {
         </div>
 
         {/* Outreach Sites Container */}
-        <div className="w-full max-w-[1700px] mx-auto">
+        <div className="w-full max-w-[1700px] mx-auto px-5">
           {/* CSS Grid container */}
           <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-3 mx-auto w-full gap-y-16 gap-x-15">
             {outreachSiteData.map((site) => {
               return (
-                <OutreachSite key={site.id} name={site.name} date={site.date} description={site.description} location={site.location}></OutreachSite>
+                <OutreachSite key={site.id} name={site.name} date={site.date} description={site.description} location={site.location} serviceLearningUrl={site.serviceLearningUrl}></OutreachSite>
               )
             })}
           </div>
