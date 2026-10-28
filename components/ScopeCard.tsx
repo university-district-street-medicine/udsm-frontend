@@ -12,7 +12,6 @@ export default function ScopeCard({ category, subtitle, badge, description, acti
           </span>
         )}
         <h3 className={`${spaceGrotesk.className} font-bold text-[1.75rem] leading-[1.2] text-navy-blue`}>{category}</h3>
-        {subtitle && <p className={`${inter.className} text-[1rem] text-slate-gray`}>{subtitle}</p>}
       </div>
 
       {description && <p className={`${inter.className} text-[1rem] leading-[1.5] text-gray-blue`}>{description}</p>}
